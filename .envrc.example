@@ -1,0 +1,11 @@
+#!/bin/bash
+# Add scripts directory to PATH for easy access to development tools
+PATH_add scripts
+
+# Workspace environment commands
+# These commands are used by the workspaces script to manage development environments
+export WORKSPACES_SETUP_CMD='./scripts/tmux-dev.sh --setup'
+export WORKSPACES_START_CMD='./scripts/tmux-dev.sh --session "$WORKSPACE_SESSION" --bg --no-setup -- $WORKSPACE_ARGS'
+export WORKSPACES_ATTACH_CMD='./scripts/tmux-dev.sh --session "$WORKSPACE_SESSION" --no-setup'
+export WORKSPACES_STOP_CMD='./scripts/tmux-dev.sh --kill --session "$WORKSPACE_SESSION"'
+export WORKSPACES_CHECK_CMD='tmux -L "$WORKSPACE_SESSION" has-session -t "$WORKSPACE_SESSION" 2>/dev/null'
